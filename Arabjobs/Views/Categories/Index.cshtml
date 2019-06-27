@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Arabjobs.Models.Category>
+
+@{
+    ViewBag.Title = "قائمة انواع الوظائف";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>قائمة انواع الوظائف</h2>
+
+<p>
+    @Html.ActionLink("انشاء نوع جديد", "Create")
+</p>
+<table class="table table-bordered table-hover " style="float: right; text-align: right">
+    <tr style="text-align: right">
+        <th style="text-align: right">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th style="text-align: right">
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+       
+        <th style="text-align: right">العمليات</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr style="text-align: right">
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryDescription)
+        </td>
+        <td>
+         
+        
+
+<input type="button" value="تعديل" onclick="location.href ='@Url.Action("Edit", "Categories",new { id=item.Id })'"  class="btn btn-success" />
+<input type="button" value="تفاصيل" onclick="location.href = '@Url.Action("Details", "Categories",new { id=item.Id })'"  class="btn btn-success" />
+<input type="button" value="حذف" onclick="location.href ='@Url.Action("Delete", "Categories",new { id=item.Id })'" class="btn btn-success" />
+
+        </td>
+    </tr>
+}
+
+</table>

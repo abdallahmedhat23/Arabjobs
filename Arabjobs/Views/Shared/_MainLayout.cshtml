@@ -1,0 +1,134 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <link href="~/Content/Style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="~/Content/rtlCss.css"/>
+
+</head>
+<body style=" background-color: #e7e7e7">
+<!-------   Header------------>
+<nav class="navbar navbar-default navbar-fixed-top  " style="background-image: url('../../Images/footerimg1_03.gif')" >
+    <div class="container " >
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed "
+                    data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="~/Home" class="navbar-brand ">
+                <img src="~/Images/arabJobs_logo_en.png" />
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse ">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="~/Home">
+                        <i class="glyphicon glyphicon-home"></i>
+                        الرئيسية
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="~/Home/About">
+                        <i class="glyphicon glyphicon-info-sign"></i> 
+                        حول الموقع
+                    </a>
+                </li>
+              
+                <li>
+                    <a href="~/Home/Contact">
+                        <i class="glyphicon glyphicon-envelope"></i> 
+                        اتصل بنا
+                    </a>
+                </li>
+                <li>
+            @using (Html.BeginForm("Search","Home",FormMethod.Post))
+            {
+                <input type = "text" name = "SearchValue" id = "asdSearch" placeholder = "ابحث هنا" />
+            }
+
+                </li>
+
+                @*<li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-folder-open"></i>
+                        أصناف العروض
+                    </a>
+                </li>*@
+            </ul>
+            <!----login partial-->
+            @Html.Partial("_Login")
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container " style="margin-bottom: 500px; margin-top: 70px; position: relative; z-index: 100;">
+
+    @RenderBody()
+
+</div>
+<hr/>
+<footer class="navbar navbar-fixed-bottom  con " style=" position: relative; z-index: 10; ">
+        <div class="container">
+            <div class="row" >
+
+                <div class="col-md-4">
+                    <h3 style="color: aliceblue; text-align: center"> من نحن</h3>
+                    <p style="text-align: justify;color: white ">
+                        ليوم مجانًا. مشاهدة من تعرفه في ArabJobs.com، استفد من شبكتك الاحترافية، واحصل على وظيفة.
+                        عرب جوبزواحدمن اهم واكبرالمواقع
+                        ف العالم العربي هدفناورؤيتنا
+                        هيا مساعدتك حتي تجدالوظيفه المناسبه فقط اشترك معنا
+                    </p>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <h3 style="color: aliceblue; ">روابط هامة</h3>
+                    <ul style="color: white; list-style-type: none" >
+                        <li><a href="~/Jobs/Create">انشاء وظيفة جديد</a></li>
+                        <li class="ss"><a href="#">وظائف للقطاع العام</a></li>
+                        <li class="ss"><a href="#">وظائف للقطاع الخاص</a></li>
+                        <li><a href="#">وظائف خارج مصر</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="glyphicon glyphicon-envelope" style="color: aliceblue"> تواصل معنا </h3>
+                    <ul style="color: white; list-style-type: none">
+                        <li><a href="#">صفحتنا على فيس بوك</a></li>
+                        <li><a href="#">تابعنا على تويتر</a></li>
+                        <li><a href="#"> قناتنا على يوتيوب</a></li>
+                        <li><a href="#">اترك لنا رسالة</a></li>
+                    </ul>
+                </div>
+            </div>
+           
+        </div>
+    <div class="tt" style=" background-color: darkcyan;">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+        <p style=" margin-bottom: 0px; text-align: center">جميع الحقوق محفوظة لموقع عرب جوبز@2019</p></div>
+    </footer>
+
+<!------- Footer------------>
+
+
+
+@*@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")*@
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootbox.all.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Arabjobs.Models.Job>
+<h1>نتائج عملية البحث</h1>
+<div class="row" style="text-align: right;">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 thumbnail" style="width: 300px; height: 300px; border: 2px solid #c0c0c0; margin: 5px;">
+            <img style="width: 300px; height: 200px;"
+                 src="~/Uploads/@Html.DisplayFor(a => item.JobImage)" />
+            @Html.DisplayFor(asd => item.JobName)
+            <div>
+                <div class="as">@Html.DisplayFor(fs => item.JobDescription) </div>
+                       
+                @Html.ActionLink("تفاصيل الوظيفة", "Details",new {jobid= item.Id}, new {@class="btn btn-success"})
+            </div>
+        </div>
+    }
+</div>

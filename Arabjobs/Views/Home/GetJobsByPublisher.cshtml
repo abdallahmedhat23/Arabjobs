@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Arabjobs.Models.GroupJobTitleViewModel>
+
+<h2>العثور على الوظائف عن الناشر</h2>
+@foreach (var item in Model)
+{
+    <h3>@item.JobtTitle</h3>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <td>اسم الباحث</td>
+            <td> الرسالة</td>
+            <td>تاريخ الارسال</td>
+        </tr>
+        </thead>
+        @foreach (var asd in item.IcolItems)
+        {
+
+
+            <tbody>
+
+            <tr>
+                <td>@asd.User.UserName</td>
+                <td>@asd.Message</td>
+                <td>@asd.ApplyDate</td>
+
+            </tr>
+            </tbody>
+
+
+        }
+    </table>
+}

@@ -1,0 +1,109 @@
+﻿@model Arabjobs.Models.Job
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Jobs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+ @Html.AntiForgeryToken()
+<div class="form-horizontal">
+<h4>تعديل الوظيفة</h4>
+<div class="alert alert-danger" id="error-div" style="display:none" >
+ <span id="view-er">
+</span>
+ </div>
+      <hr/>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.JobImage)
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JobName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JobName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobImage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+              <input type="file" name="Reload" id="inputjobimage"/>
+                @Html.ValidationMessageFor(model => model.JobImage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, "نوع الوظيفة", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="تعديل" id="btn" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("العودة الي السابق", "Index")
+</div>
+ 
+
+@section scripts{
+    <script>
+        $(function () {
+            $("#btn").click(function () { 
+        if ($("#inputjobimage").val() != "") {
+            //$("#btn").click(function () {
+            //    //سنتحقق من الانبوت فايل اذا كان فارغا 
+            //    $("#error-div").fadeIn("slow");
+            //    $("#view-er").append("الرجاء ادخال صورة");
+            //    return false;
+
+                //check if image extension is falid
+                var filename = document.getElementById("inputjobimage").value;
+                // the use of (substr) if filename= asd.png ,the extension value wil be(.png)and +1 will make it =>(png)
+                var extensionImage = filename.substr(filename.lastIndexOf('.') + 1);
+                var validExtensions = ['png', 'gif', 'jpg', 'bmp'];
+                //تستخدم لمقارنة قيمة داخل قيمة inArray()
+                if ($.inArray(extensionImage, validExtensions) == -1) {
+                    $("#error-div").fadeIn("slow");
+                    $("#view-er").append("الرجاء ادخال صورة بامتداد صحيح");
+                    return false;
+                }
+                //check if the image size is falid
+                var myfilesize = document.getElementById("inputjobimage").files[0].size / 1024 / 1024;
+                if (myfilesize > 1) {
+                    $("#error-div").fadeIn("slow");
+                    $("#view-er").append("الرجاء ادخال صورة اقل من 2ميجا");
+                    return false;
+
+                }
+            }
+            });
+        });
+     
+
+</script>
+}
+
+
+
+
+

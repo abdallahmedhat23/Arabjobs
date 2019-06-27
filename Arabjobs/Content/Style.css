@@ -1,0 +1,133 @@
+﻿@font-face {
+    font-family: abdo;
+    src: url('font/ae_Cortoba.woff');
+    src: url('font/ae_Cortoba.woff2');
+
+}
+@font-face {
+    font-family: khrba;
+    src: url('font/FFTaweel-Regular.woff');
+    src: url('font/FFTaweel-Regular.woff2');
+}
+@font-face {
+    font-family: koor;
+    src: url('font/MolsaqArabic-ExtraBold.woff');
+    src: url('font/MolsaqArabic-ExtraBold.woff2');
+}
+
+.navbar-default .navbar-nav > li > a {
+        color: #fff;
+        font-family: koor;
+        font-style: inherit;
+        font-size: initial;
+    }
+.ss {
+    list-style-type: none;
+}
+
+
+
+.nav > li {
+    position: relative;
+    display: block;
+    height: 50px;
+    padding-top: 17px;
+}
+.navbar-brand > img {
+    display: block;
+    width: 120px;
+}
+.navbar-nav > li > a {
+    padding-top: 2px;
+    padding-bottom: 15px;
+}
+.p {
+    text-align: justify;
+    color:white;
+}
+.butonstyle {
+    margin-left: 400px;
+}
+body {
+    font-family: koor;
+    background-color: #e7e7e7;
+}
+
+
+.con {
+    background-image: url('../Images/footerimg1_03.gif');
+    height: 170px;
+
+}
+.tt {
+
+    background-color: darkcyan;
+    width:100%;
+}
+
+.tt p{
+    color: #663399;  
+    font-weight: bold;
+    font-size: 20px;
+   
+   
+}
+
+
+#asdSearch {
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+  margin-top: -5px;
+    transition: width 0.4s ease-in-out;
+    margin-right: 50px;
+}
+#asdSearch:focus {
+    width: 120px;
+   
+}
+
+.imgsize img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 100%;
+    margin-right: 70px;
+    color: #e7e7e7;
+  
+}
+
+
+
+
+
+.isize {
+
+    margin-right: 40px;
+
+  
+}
+.is{
+  margin-top:20px;
+}
+.sahm {
+    width: 65px;
+    height: 65px;
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    cursor: pointer;
+    display: none;
+}
+    .sahm:hover{
+       border-radius: 100%;
+        border: solid 3px black;
+    }.sahm img {
+        width: 60px;
+        height: 60px
+    }
+.jumbotron {
+    padding-right: 60px;
+    padding-left: 60px;
+    background-color: #9292ba;
+}

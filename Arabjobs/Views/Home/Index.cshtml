@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Arabjobs.Models.Category>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <div class="jumbotron">
+        <h1>اهلا بك عزيزي الزائر</h1>
+        <p class="lead">اهلا بك فى صفحة البحث عن الوظيفة اذا كنت باحث عن وظيفة</p>
+        <p><a href="https://asp.net" class="btn btn-success btn-lg">قراءة المذيد &raquo;</a></p>
+    </div>
+    @foreach (var item in Model)
+    {
+        <h3>@Html.DisplayFor(a => item.CategoryName)</h3>
+        <h4>@Html.DisplayFor(a => item.CategoryDescription)</h4>
+
+        <div class="row" style="text-align: right;">
+            @foreach (var s in item.Jobs)
+            {
+                <div class="col-md-3 thumbnail" style="width: 300px; height: 300px; border: 2px solid #c0c0c0; margin: 5px;">
+                    <img style="width: 300px; height: 200px;"
+                         src="~/Uploads/@Html.DisplayFor(a => s.JobImage)" />
+                    @Html.DisplayFor(asd => s.JobName)
+                    <div>
+                        <div class="as">@Html.DisplayFor(fs => s.JobDescription) </div>
+                       
+                        @Html.ActionLink("تفاصيل الوظيفة", "Details",new {jobid=s.Id}, new {@class="btn btn-success"})
+                    </div>
+                </div>
+           }
+        </div>
+    }
+    <div class="sahm">
+        <img src="~/Images/up.png" />
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop()>=600) {
+                $('.sahm').show()
+                }
+            else {
+                $('.sahm').hide()
+            }
+          
+        });
+
+        $('.sahm').click(function() {
+            $('html,body').animate({scrollTop:'0px'},3000)
+
+        });
+
+    });
+
+</script>
+

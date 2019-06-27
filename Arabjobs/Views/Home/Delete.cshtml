@@ -1,0 +1,53 @@
+﻿@model Arabjobs.Models.ApplyForJob
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>حذف</h2>
+
+<h3>هل انت متاكد انك تريد حذف هذه الوظيفة?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        
+        
+        <dt>
+           اسم الوظيفة
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job.JobName)
+        </dd>
+ 
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplyDate)
+        </dd>
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-success" /> |
+            @Html.ActionLink("العودة الي القائمة", "Index","",new {@class="btn btn-success"})
+        </div>
+    }
+</div>

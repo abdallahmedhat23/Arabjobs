@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $("#btn").click(function() {
+                $("#pp").toggle();
+
+            });
+
+            $("#show").click(function () {
+                $("#pp").show();
+
+            });
+
+            $("#fadein").click(function () {
+                $("#pp").fadeIn(5000);
+
+            });
+            $("#fadeOut").click(function () {
+                $("#pp").fadeOut("slow");
+
+            });
+            $("#fadetoggle").click(function() {
+                $("#pp").fadeToggle("slow");
+
+
+            });
+            $("#fadeto").click(function() {
+                $("#pp").fadeTo("slow", 0.5);
+            });
+            $("#slidedown").click(function() {
+                $("#pp").slideDown("slow");
+            });
+            $("#slidedeup").click(function() {
+                $("#pp").slideUp("slow")
+
+            });
+            $("#slidedeToggle").click(function() {
+                $("#pp").slideToggle("slow");
+
+            });
+
+            $("#anime").click(function() {
+                $("#pp").animate({
+                    "width": "200px",
+                    "height": "20px"
+                  
+                });
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <div style=" margin-top: 0px;">
+        <input type="button" id="btn" value="toggle data" />
+        <input type="button" id="show" value="show data" />
+        <input type="button" id="fadein" value="fade in" />
+        <input type="button" id="fadeOut" value="fade out" />
+        <input type="button" id="fadetoggle" value="fade toggle" />
+        <input type="button" id="fadeto" value="fade to with obecity" />
+        <input type="button" id="slidedown" value="slide Down" />
+        <input type="button" id="slidedeup" value="slide up" />
+        <input type="button" id="slidedeToggle" value="slidede Toggle" />
+        <input type="button" id="anime" value="anime" />
+    </div>
+    <p id="pp" style="width: 200px; height: 200px; display: none; margin-top: 200px; border: 5px solid black;
+     background-color: aliceblue">
+        elslam alecom if you not plan to success
+        you plain to fail
+    </p>
+
+</body>
+</html>

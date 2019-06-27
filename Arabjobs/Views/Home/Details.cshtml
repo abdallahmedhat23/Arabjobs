@@ -1,0 +1,53 @@
+﻿@model Arabjobs.Models.Job
+
+@{
+
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="alert alert-success"><h1>التفاصيل</h1></div>
+
+<div>
+    
+    <h2>الوظيفة</h2>
+    <hr />
+    <dl class="dl-horizontal">
+       
+            @Html.DisplayNameFor(model => model.categ.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categ.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobImage)
+        </dt>
+
+            <dd>
+                <img src="~/Uploads/@Html.DisplayFor(a=>a.JobImage)" style="width:150px; height: 150px" class="thumbnail img-thumbnail" />
+                  
+            </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("التقدم الي الوظيفة", "Apply", new { id = Model.Id } ,new{@class="btn btn-success"}) |
+    @Html.ActionLink("العودة الى القائمة", "Index","",new {@class="btn btn-success"})
+</p>

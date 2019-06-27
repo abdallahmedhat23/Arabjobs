@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Arabjobs.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>قائمة الوظائف</h2>
+
+<p>
+    @Html.ActionLink("انشاء وظيفة جديدة", "Create")
+</p>
+<table class="table table-bordered table-hover ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categ.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.categ.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobDescription)
+        </td>
+        <td>
+           <img src="~/Uploads/@Html.DisplayFor(asd=>item.JobImage)" style="width: 60px; height: 60px" class="thumbnail"/>
+        </td>
+        <td>
+            @Html.ActionLink("تعديل", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("تفاصيل", "Details", new { id=item.Id }) |
+            @*@Html.ActionLink("حذف", "Delete", new { id=item.Id })*@
+            @*<a href="@Url.Action("Delete","Jobs",new { id=item.Id })" class="btn btn-danger asd">حذف</a>*@
+            <button type="button" class="btn btn-danger asd" data-id="@item.Id">حذف</button>
+        </td>
+    </tr>
+}
+
+
+</table>
+@section scripts
+{
+    <script>
+         
+        $(document).ready(function() {
+            $('.asd').on('click', function () {               
+                var btn = $(this);
+            bootbox.confirm("Are you sure that you need to delete this book?",
+                function(result) {
+                    if (result) {
+                        $.ajax({
+                            url: '/Jobs/DeleteConfirmed?id=' + btn.data('id'),
+                                success: function() {
+                                btn.parents('tr').fadeOut();
+                            },
+                            error: function (e) {
+                                console.log(e);
+                                alert(e.statusText);
+                            }
+                        });
+                    }
+                });
+                    
+            });
+        });
+        </script>
+
+
+
+    }

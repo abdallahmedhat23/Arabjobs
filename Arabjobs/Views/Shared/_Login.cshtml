@@ -1,0 +1,105 @@
+﻿
+@using Arabjobs.Models
+@using  Microsoft.AspNet.Identity
+
+
+@if (Request.IsAuthenticated)
+{
+
+    using (Html.BeginForm("LogOff", "Account",FormMethod.Post,new {id="loff"}))
+    {
+         var db= new ApplicationDbContext();
+        var curentuser = User.Identity.GetUserId();
+        var userData = db.Users.Where(a => a.Id == curentuser).FirstOrDefault();
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>مرحبا بك يا @userData.UserName</strong>
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                 </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-4 imgsize">                           
+                                    <img src="~/UploadsUseImages/@userData.UserImage" />
+                                </div>
+                                <div class="col-lg-8 isize">
+                                    <p class="text-right">
+                                        <strong> اهلا بك يا @userData.UserName</strong> 
+                                    </p>
+                                    @{
+                                        if (userData.UserType=="ناشرون")
+                                        {
+                                            <a href="~/Home/GetJobsByPublisher" class="btn btn-success">وظائف تم نشرها</a>
+                                            <a href="Jobs/Create" class="btn btn-success is">نشر وظيفة جديدة</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="~/Home/GetJobsByUser" class="btn btn-success">وظائف تقدمت اليها</a>
+                                            <a href="~/Home/Index" class="btn btn-success is">التقدم لوظيفة جديدة</a>
+                                        }
+
+                                        <a href="~/Account/EditUserData"class="btn btn-primary"  style="margin-top: 20px;">تعديل الحساب</a>
+                                        @*<a href="@Url.Action("EditUserData","Account", new {id=User.Identity.GetUserId()})"class="btn btn-primary"  style="margin-top: 20px;">تعديل الحساب</a>*@
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <a href="javascript:document.getElementById('loff').submit()" class="btn btn-danger btn-block">تسجيل الخروج</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                @*@Html.ActionLink("مرحبا بك يا"+User.Identity.GetUserName(),"index","Manage")*@
+            </li>
+            <li>
+               
+            </li>
+            @*<li>
+                    <a href="@Url.Action("GetJobsByUser", "Home")">
+                    <i class="glyphicon glyphicon-envelope"></i> 
+                    وظائف تقدمت اليها
+                </a>
+            </li>*@
+        </ul>
+    }
+
+}
+else
+{
+   
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="~/Account/Login">
+                <i class="glyphicon glyphicon-user"></i>
+                تسجيل الدخول
+            </a>
+        </li>
+       
+        <li>
+            <a href="~/Account/Register">
+                <i class="glyphicon glyphicon-lock"></i>
+                الاشتراك
+            </a>
+        </li>
+    </ul>
+    
+}
+
+
+
+
+
+
+
+
+
